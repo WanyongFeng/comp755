@@ -20,12 +20,13 @@ textst = list(true.loc[:,"text"])
 texts = np.array(textst)
 
 words = set()
-punc = '''!()-[]{};:'"\,<>./?@#%^&*_~'''
+punc = '''!()-[]{};:'"\,<>./?@#%^&*_~”“’'''
 for idx, text in enumerate(texts):
     for ele in text:
         if ele in punc:
             text = text.replace(ele, "")
     text = re.sub(' +', ' ', text)
+    text = text.lower()
     texts[idx] = text    
     temp = text.split()
     words = words.union(set(temp))
